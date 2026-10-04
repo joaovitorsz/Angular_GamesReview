@@ -1,0 +1,128 @@
+<main class="pagina">
+
+  <header class="cabecalho">
+    <h1>Games Review</h1>
+    <h3>De Gamers, para Gamers.</h3>
+    <p>O <strong>Games Review</strong> tem como função apresentar reviews de jogos publicados pela comunidade,<br> podendo você também registrar sua avaliação a respeito de um jogo de sua preferência! ☺️</p>
+  </header>
+
+  <hr>
+
+
+<!--Criar avaliação-->
+
+
+  <section class="criarAvaliacao">
+    <h2>Compartilhe conosco a sua jornada!</h2>
+    <p>Deixe que o mundo possa agraciar as aventuras vividas através dos seus olhos.</p>
+
+    @if (mensagemAlerta !== '') {
+      <div class="alertaVariavel"
+        [class.alerta-erro] = "tipoAlerta === 'erro'"
+        [class.alerta-sucesso] = "tipoAlerta === 'sucesso'"
+        >
+        <p>{{mensagemAlerta}}</p>
+        <button class = "botaoFecharAlerta" (click)="mensagemAlerta = ''">✖</button>
+      </div>
+    }
+
+    <article class="camposAvaliacoes">
+
+      <div class="campoAvaliacao">
+        <label for="avaliadorNovaAvaliacao">Qual o seu nome?</label>
+        <input class="entradasAvaliacao"
+          id="avaliadorNovaAvaliacao"
+          type="string"
+          [(ngModel)]="avaliadorNovaAvaliacao"
+          placeholder="Insira o seu nome"
+        />
+      </div>
+      
+      <div class="campoAvaliacao">
+        <label for="jogoNovaAvaliacao">Qual jogo vai avaliar?</label>
+        <input class="entradasAvaliacao"
+          id="jogoNovaAvaliacao"
+          type="string"
+          [(ngModel)]="jogoNovaAvaliacao"
+          placeholder="Insira o nome do jogo"
+        />
+      </div>
+
+      <div class="campoAvaliacao">
+        <label for="notaNovaAvaliacao">Qual a nota do jogo?</label>
+        <input class="entradasAvaliacao"
+          id="notaNovaAvaliacao"
+          type="number"
+          min="0"
+          max="10"
+          step="0.1"
+          [(ngModel)]="notaNovaAvaliacao"
+          placeholder="Insira a nota para o jogo"
+        />
+      </div>
+
+      <div class="campoAvaliacao">
+        <label for="generoNovaAvaliacao">Qual o gênero do jogo?</label>
+        <input class="entradasAvaliacao"
+          id="generoNovaAvaliacao"
+          type="string"
+          [(ngModel)]="generoNovaAvaliacao"
+          placeholder="Insira o gênero do jogo"
+        />
+      </div>
+
+      <div class="campoAvaliacao">
+        <label for="comentarioNovaAvaliacao">Qual o seu comentário sobre o jogo?</label>
+        <input class="entradasAvaliacao"
+          id="comentarioNovaAvaliacao"
+          type="string"
+          [(ngModel)]="comentarioNovaAvaliacao"
+          placeholder="Insira seu comentário para o jogo"
+        />
+      </div>
+
+    </article>
+
+    <button (click)="gravarAvaliacao()" class="botaoGravarAvaliacao">Gravar Avaliação</button>
+
+  </section>
+
+  <hr>
+
+
+<!--Galeria de Avaliações-->
+
+
+  <section class="galeriaAvaliacoes">
+    
+    <h2>Avaliações</h2>
+
+    @for (jogo of jogosAgrupados; track jogo.titulo) {
+      
+      <article class="cardsJogo">
+        <h3 (click)="jogo.expandido =!jogo.expandido">
+          {{jogo.titulo | titlecase}}
+          <span>{{jogo.expandido ? '▼' : '►'}}</span>
+        </h3>
+
+        @if (jogo.expandido) {
+          <div class="cardAvaliacoes">
+            @for (avaliacao of jogo.avaliacoes; track $index) {
+
+              <div class="cardAvaliacoesUsuario" tabindex="0">
+                <p><Strong>Avaliador:</Strong> {{avaliacao.avaliador | titlecase}}</p>
+                <p><Strong>Nota:</Strong> {{avaliacao.nota}}</p>
+                <p><Strong>Gênero:</Strong> {{avaliacao.genero | titlecase}}</p>
+                <p><Strong>Comentário:</Strong> {{avaliacao.comentario}}</p>
+              </div>
+
+            }
+          </div>
+        }
+      </article>
+    }
+
+  </section>
+
+
+</main>

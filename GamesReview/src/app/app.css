@@ -1,0 +1,267 @@
+/*----------Variáveis----------*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+.pagina{
+    min-height: 100vh;
+    background: var(--cor-fundo);
+    padding: 0.5rem 1.5rem 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--cor-texto);
+}
+
+hr{
+    border: none;
+    border: 2px solid var(--cor-card-avaliacao);
+    margin: 1.8rem 0;
+    opacity: 0.3;
+    box-shadow: 0 0 2px;
+    border-radius: var(--borda-raio);
+}
+
+
+/*----------Cabeçalho----------*/
+
+
+.cabecalho{
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto 2.5rem;
+}
+
+.cabecalho h1{
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+}
+
+.cabecalho h3{
+    font-size: 1.75rem, 4vw, 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--cor-texto-suave);
+}
+
+.cabecalho p{
+    color: var(--cor-texto-suave);
+}
+
+
+/*----------Alerta----------*/
+
+
+.alertaVariavel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border-radius: var(--borda-raio);
+    padding: 0.5rem 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: clamp(1rem, 1vw, 1.5rem);
+    font-weight: 600;
+}
+
+.alerta-erro{
+    border: 3px solid var(--cor-erro);
+    box-shadow: 0 0 20px rgba(224,67,60,0.2);
+}
+
+.alerta-sucesso{
+    border: 5px solid var(--cor-sucesso);
+    box-shadow: 0 0 20px rgba(31,157,85,0.2);
+}
+
+.botaoFecharAlerta{
+    background: var(--cor-primaria);
+    width: auto;
+    justify-content: center;
+    margin: 1;
+    color: #000000;
+    opacity: 0.8;
+    font-size: 1rem;
+    transition: transform 0.3s, opacity 0.2s;
+}
+
+.botaoFecharAlerta:hover{
+    background: var(--cor-primaria-escura);
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+/*----------Gravar Avaliação----------*/
+
+
+.criarAvaliacao h2{
+    text-align: center;
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    margin: 0.5rem;
+}
+
+.criarAvaliacao p{
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--cor-texto-suave);
+}
+
+.camposAvaliacoes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+    gap: var(--espaco);
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.camposAvaliacoes .campoAvaliacao:first-child{ /*Faz com que o nome ocupe toda a primeira linha*/
+    grid-column: 1 / -1;
+    max-width: 55.2rem;
+    margin: 1.2rem auto;
+    width: 100%;
+}
+
+.campoAvaliacao{
+    text-align: center;
+    display: grid;
+    margin: 0.5rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.entradasAvaliacao{
+    margin-top: 0.3rem;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--cor-texto-suave);
+    background: none;
+    text-align: center;
+    color: var(--cor-texto-suave);
+    font-size: 1rem;
+}
+
+.botaoGravarAvaliacao{
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    background: var(--cor-primaria);
+    border-radius: 8px;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.botaoGravarAvaliacao:hover{
+    transform: scale(1.05);
+    background: var(--cor-primaria-escura);
+}
+
+
+/*----------Painel de Avaliações----------*/
+
+
+.galeriaAvaliacoes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    text-align: center;
+    gap: var(--espaco);
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.galeriaAvaliacoes h2:first-child{
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 0.8rem auto 0.8rem;
+    width: 100%;
+}
+
+.galeriaAvaliacoes h2{
+    text-align: center;
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+}
+
+.cardsJogo{
+    gap: var(--espaco);
+    background: var(--cor-card-jogo);
+    border-radius: var(--borda-raio);
+    box-shadow: var(--sombra-card);
+    padding: var(--espaco);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: entrada 1s ease both;
+}
+
+.cardsJogo:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card-hover);
+}
+
+.cardsJogo h3{
+    font-size: 1.75rem, 1vw, 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.cardAvaliacoes{
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(180px, 1fr));
+    text-align: center;
+    animation: expandirAvaliacoes 1s ease-out forwards;
+    transform-origin: top;
+}
+
+.cardAvaliacoesUsuario{
+    background: var(--cor-card-avaliacao);
+    margin: 1rem 0;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--borda-raio);
+    color: var(--cor-texto-suave);
+}
+
+
+@keyframes entrada{
+    from{
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandirAvaliacoes {
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .camposAvaliacoes{
+        grid-template-columns: 1fr;
+    }
+    .galeriaAvaliacoes{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
